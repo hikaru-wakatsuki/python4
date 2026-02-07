@@ -6,15 +6,23 @@ def ft_ancient_text() -> None:
     print()
     text: str = "ancient_fragment.txt"
     print(f"Accessing Storage Vault: {text}")
+    try:
+        f: TextIO = open(text, "r")
+    except FileNotFoundError:
+        print("ERROR: Storage vault not found. Run data generator first.")
+        return
     print("Connection established...")
     print()
     try:
-        f: TextIO = open(text)
+        print("RECOVERED DATA:")
         print(f.read())
-        f.close()
-        print("Data recovery complete. Storage unit disconnected.")
     except Exception:
-        print("ERROR: Storage vault not found.  Run data generator first.")
+        print("ERROR: Failed to read data from storage vault.")
+        return
+    finally:
+        f.close()
+    print()
+    print("Data recovery complete. Storage unit disconnected.")
 
 
 if __name__ == "__main__":
