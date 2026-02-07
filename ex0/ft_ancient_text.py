@@ -1,3 +1,6 @@
+from typing import TextIO
+
+
 def ft_ancient_text() -> None:
     print("=== CYBER ARCHIVES - DATA RECOVERY SYSTEM ===")
     print()
@@ -6,7 +9,7 @@ def ft_ancient_text() -> None:
     print("Connection established...")
     print()
     try:
-        f: object = open(text)
+        f: TextIO = open(text)
         print(f.read())
         f.close()
         print("Data recovery complete. Storage unit disconnected.")
